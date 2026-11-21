@@ -1,0 +1,18 @@
+\begin{table*}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{llr}
+\toprule
+Model & Architecture & \#Params \\
+\midrule
+MLP (1 hidden) & \texttt{3072-519-10} & 1,601,125 \\
+Deep MLP & \texttt{3072-378-378-378-378-10} & 1,598,194 \\
+Patch-MLP & \texttt{4x4 patches: shared 48-64-64 token MLP, then 4096-388-10} & 1,601,854 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{Q1 model specifications (BatchNorm after every hidden Linear; LayerNorm inside the Patch-MLP token MLP).}
+\label{tab:q1spec}
+\end{table*}

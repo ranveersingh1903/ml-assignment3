@@ -1,0 +1,9 @@
+name: ml-a3
+channels: [pytorch, nvidia, conda-forge]
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - -r requirements.txt
+# Tested with: torch 2.15, torchvision 0.29, scikit-learn 1.9, numpy 2.5, scipy 1.18, matplotlib 3.11.
+# After your run, freeze the exact versions:  pip freeze > results/pip_freeze.txt

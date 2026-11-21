@@ -1,0 +1,33 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrrrr}
+\toprule
+Kernel & C & Train & Val & SV \% & Fit s &  \\
+\midrule
+linear & 0.01 & 63.3 & 47.0 & 85.6 & 232 &  \\
+linear & 0.1 & 75.0 & 46.6 & 82.3 & 294 & $\dagger$ \\
+linear & 1 & 89.5 & 44.8 & 80.8 & 354 & $\dagger$ \\
+linear & 10 & 95.9 & 43.6 & 84.6 & 400 & $\dagger$ \\
+linear & 100 & 95.9 & 43.3 & 84.8 & 400 & $\dagger$ \\
+linear & 1000 & 95.9 & 43.3 & 84.8 & 433 & $\dagger$ \\
+poly & 0.01 & 46.0 & 39.3 & 98.3 & 335 &  \\
+poly & 0.1 & 70.9 & 49.2 & 93.3 & 284 &  \\
+poly & 1 & 93.1 & 51.0 & 90.8 & 260 &  \\
+poly & 10 & 99.5 & 49.5 & 89.7 & 267 &  \\
+poly & 100 & 100.0 & 48.7 & 89.4 & 274 &  \\
+poly & 1000 & 100.0 & 48.6 & 89.5 & 273 &  \\
+rbf & 0.01 & 31.9 & 29.2 & 100.0 & 525 &  \\
+rbf & 0.1 & 45.1 & 38.3 & 98.4 & 468 &  \\
+rbf & 1 & 79.7 & 51.0 & 94.5 & 438 &  \\
+rbf & 10 & 98.6 & 52.3 & 95.4 & 450 &  \\
+rbf & 100 & 100.0 & 51.5 & 95.2 & 474 &  \\
+rbf & 1000 & 100.0 & 51.4 & 95.2 & 450 &  \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{Q4(a) full C$\times$kernel sweep on the fixed representation \emph{DAE d=1024} (1024-d, standardised), fixed stratified subset of 10000 training images, full validation set. Selected: rbf, C=10 (val 52.3\%); test accuracy 52.1\%. $\dagger$ = hit the iteration cap.}
+\label{tab:q4a}
+\end{table}

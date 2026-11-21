@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrrr}
+\toprule
+CNN condition & Acc & NLL & Conf$|$correct & Conf$|$wrong & ECE \\
+\midrule
+Clean & 87.9 & 0.52 & 97.3 & 80.6 & 7.4 \\
+Pixel perm. & 55.4 & 2.30 & 90.8 & 78.3 & 29.8 \\
+Block 16px & 79.4 & 0.90 & 95.5 & 79.0 & 12.7 \\
+Block 8px & 67.2 & 1.60 & 93.2 & 79.8 & 21.7 \\
+Block 4px & 56.9 & 2.40 & 91.9 & 80.9 & 30.3 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{Q2(c) CNN test errors and confidence (means over seeds); each condition trained and tested with the same transformation. Conf$|$correct / Conf$|$wrong = mean max-softmax on correct / wrong test predictions.}
+\label{tab:q2conf}
+\end{table}

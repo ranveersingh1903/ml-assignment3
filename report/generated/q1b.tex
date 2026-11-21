@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrrr}
+\toprule
+Point in training & Epoch & Val & Clean-subset & Noisy: fit noisy & Noisy: true \\
+\midrule
+Peak validation & 3 & 44.7 & 51.2 & 8.0 & 44.6 \\
+Noisy fit $>$50\% & 14 & 37.4 & 77.9 & 50.9 & 19.6 \\
+Final & 150 & 39.3 & 100.0 & 100.0 & 0.0 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{Q1(b) memorisation: 10.52M-parameter MLP, 40\% of training labels replaced by a random wrong class, no weight decay, constant LR. \emph{Noisy: fit noisy} = fraction of corrupted examples predicted as their (wrong) training label; \emph{Noisy: true} = fraction predicted as their hidden true class. Clean-label control (same model/protocol): peak val 59.4\%, final 59.4\%. Test accuracy of the val-selected checkpoint: 45.5\% (noisy) vs 58.9\% (clean).}
+\label{tab:q1b}
+\end{table}

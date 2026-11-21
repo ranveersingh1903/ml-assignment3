@@ -1,0 +1,17 @@
+\begin{table*}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrrrrr}
+\toprule
+Model & Params & MACs & Clean & Pixel perm. & Block 16px & Block 8px & Block 4px \\
+\midrule
+MLP (reused Q1) & 1.60M & 1.6M & 55.4$\pm$0.3 & 55.2$\pm$0.3 & -- & -- & -- \\
+CNN & 1.62M & 215M & 87.9$\pm$0.2 & 55.4$\pm$0.2 & 79.4$\pm$0.6 & 67.2$\pm$0.1 & 56.9$\pm$0.3 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{Q2 test accuracy (\%, mean$\pm$sd over seeds) for the clean, spatially disturbed (fixed pixel permutation) and third (per-image block shuffle) conditions. Each condition is retrained with the transformation applied identically to train/val/test. Specs: MLP \texttt{3072-519-10}; CNN \texttt{conv3x3 [76,76]-pool-[152,152]-pool-[304,304]-pool-GAP-304-10 (BN+ReLU)}.}
+\label{tab:q2}
+\end{table*}

@@ -1,0 +1,18 @@
+\begin{table*}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+Pair & Conf. & Err\% & SV\% & @C\% & Err in margin\% & $|f|$ err/corr & Fisher & 10NN pur. \\
+\midrule
+cat/dog & 431 & 21.6 & 92 & 4 & 93 & 0.40/0.49 & 0.005 & 55 \\
+automobile/truck & 372 & 18.6 & 90 & 0 & 97 & 0.34/0.57 & 0.014 & 64 \\
+bird/deer & 286 & 14.3 & 79 & 16 & 87 & 0.54/0.70 & 0.010 & 60 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{Q4(b) the most-confused test pairs for the selected SVM. SV\% = share of the pair's training points that are support vectors of the pair's own OvO classifier; @C = share of those at the box bound (margin violators); Err in margin = share of pair errors with $|f_{ij}|<1$; Fisher = between-mean distance$^2$ over summed within-class variance; 10NN pur. = same-class share of 10 cosine nearest neighbours.}
+\label{tab:q4b}
+\end{table*}

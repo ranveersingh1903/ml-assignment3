@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrr}
+\toprule
+Width & Params & Train@best & Final train & Val \\
+\midrule
+256 & 790k & 80.1 & 86.8 & 54.4 \\
+512 & 1.58M & 87.6 & 93.5 & 55.5 \\
+1024 & 3.16M & 97.0 & 97.4 & 56.0 \\
+2048 & 6.32M & 92.8 & 99.1 & 56.3 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{Q1(a) diagnostic: width sweep of the 1-hidden-layer MLP (parameters vary by design; validation only).}
+\label{tab:q1cap}
+\end{table}

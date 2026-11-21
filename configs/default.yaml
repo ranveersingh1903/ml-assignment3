@@ -1,0 +1,74 @@
+# ---------------------------------------------------------------------------
+# Machine Learning Assignment 3 -- single source of truth for every number.
+# Change ONLY `roll_number` / `name` / `repo_url` before running.
+# ---------------------------------------------------------------------------
+name: "Ranveer"
+roll_number: "P25CS0007"        # seed = all digits in order -> 250007
+repo_url: "https://github.com/ranveersingh1903/ml-assignment3"
+
+data_root: "data"               # torchvision downloads CIFAR10 here
+results_dir: "results"
+figures_dir: "figures"
+split_file: "splits/cifar10_split.npz"
+val_size: 5000
+
+# Shared training protocol (identical for every compared classifier).
+train:
+  batch_size: 256
+  optimizer: adamw
+  weight_decay: 5.0e-4
+  schedule: cosine              # cosine decay to 0, 1 warm-up epoch
+  warmup_epochs: 1
+  augmentation: none            # deliberate: augmentation would inject a
+                                # translation prior and confound Q1/Q2
+  amp: true                     # mixed precision on CUDA only
+  select: best_val_acc          # checkpoint chosen on validation accuracy
+
+# --------------------------------------------------------------------- Q1
+q1:
+  param_budget: 1600000         # every Q1(a) comparison model is matched to this (+-2%)
+  epochs: 40
+  lr_grid: [1.0e-3, 3.0e-4]     # same tuning budget for every model
+  extra_seeds: [1, 2]           # re-runs at the selected LR (seed 0 = grid run)
+  deep_mlp_depth: 4             # hidden layers of the deep/narrow MLP
+  patch_size: 4
+  patch_token_dim: 64
+  capacity_widths: [256, 512, 1024, 2048]   # diagnostic sweep (params vary by design)
+  memorisation:
+    noise_rate: 0.4             # fraction of training labels replaced at random
+    widths: [2048, 2048]        # 2 hidden layers -> ~10.5M params
+    epochs: 150
+    lr: 1.0e-3
+    weight_decay: 0.0           # no regularisation -> memorisation is possible
+    schedule: constant
+
+# --------------------------------------------------------------------- Q2
+q2:
+  # Fairness criterion (fixed before any result): CNN parameter count matched to the Q1
+  # plain MLP (q1.param_budget, +-2%), and the SAME epochs / LR grid / seeds / optimiser /
+  # schedule / no augmentation / val-based checkpoint as Q1. Hence the Q1 `mlp` runs are
+  # reused as the Q2 MLP unchanged.
+  cnn_width_search: true
+  block_sizes: [16, 8, 4]       # Q2(c) per-image block shuffle granularity
+
+# --------------------------------------------------------------------- Q3
+q3:
+  bottlenecks: [16, 128, 1024]  # 8x steps -> clearly separated capacities
+  epochs: 40
+  lr: 1.0e-3
+  noise_sigma: 0.2              # Gaussian noise std in [0,1] pixel units
+  probe_wd_grid: [0.0, 1.0e-4, 1.0e-3, 1.0e-2]   # L2 strength for the linear probe, chosen on val
+  knn_k: 20
+
+# --------------------------------------------------------------------- Q4
+q4:
+  representation: auto          # auto = Q3 encoder with best linear-probe VAL accuracy
+  train_subset: 10000           # fixed stratified subset, drawn before any model selection
+  C_grid: [0.01, 0.1, 1.0, 10.0, 100.0, 1000.0]
+  kernels: [linear, poly, rbf]
+  poly_degree: 3
+  max_iter: 300000              # SMO iteration cap; capped fits are flagged in the table
+  n_pairs: 3
+  n_show: 8
+  cluster_methods: [kmeans, gmm]
+  cluster_k: [5, 8, 10, 12, 15, 20]

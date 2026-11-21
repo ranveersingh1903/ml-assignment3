@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrr}
+\toprule
+Bottleneck & Params & Val MSE & Val PSNR & Best ep. \\
+\midrule
+d=16 & 326,963 & 0.01642 & 17.85 & 37 \\
+d=128 & 785,827 & 0.00477 & 23.21 & 40 \\
+d=1024 (selected) & 4,456,739 & 0.00232 & 26.35 & 38 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{Q3(a) autoencoders differing only in the Linear bottleneck. Selected by lowest val MSE; its test MSE is 0.00231 (PSNR 26.37 dB).}
+\label{tab:q3a}
+\end{table}

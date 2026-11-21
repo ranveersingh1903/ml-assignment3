@@ -1,0 +1,27 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrr}
+\toprule
+Method & k & Val silhouette & Val BIC & Val NMI (not used) \\
+\midrule
+kmeans & 5 & 0.021 & -- & 0.048 \\
+kmeans & 8 & 0.001 & -- & 0.080 \\
+kmeans & 10 & -0.016 & -- & 0.099 \\
+kmeans & 12 & -0.020 & -- & 0.100 \\
+kmeans & 15 & -0.032 & -- & 0.110 \\
+kmeans & 20 & -0.034 & -- & 0.111 \\
+gmm & 5 & -0.087 & 1.33e+07 & 0.073 \\
+gmm & 8 & -0.116 & 1.31e+07 & 0.090 \\
+gmm & 10 & -0.111 & 1.31e+07 & 0.094 \\
+gmm & 12 & -0.118 & 1.3e+07 & 0.103 \\
+gmm & 15 & -0.129 & 1.3e+07 & 0.108 \\
+gmm & 20 & -0.130 & 1.29e+07 & 0.107 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{Q4(c) clustering model selection on validation representations (fit on training representations). The rule fixed in advance is maximum validation silhouette (label-free); NMI is shown only for reference.}
+\label{tab:q4csel}
+\end{table}

@@ -1,0 +1,25 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrr}
+\toprule
+Class & SVM recall & Max p(cluster$|$class) & Dominant cluster \\
+\midrule
+airplane & 59.9 & 50.7 & c2 \\
+automobile & 65.2 & 47.4 & c3 \\
+bird & 39.5 & 41.5 & c3 \\
+cat & 37.8 & 35.1 & c2 \\
+deer & 44.0 & 44.3 & c3 \\
+dog & 40.6 & 42.2 & c2 \\
+frog & 57.7 & 48.2 & c3 \\
+horse & 55.3 & 38.0 & c3 \\
+ship & 62.4 & 45.4 & c3 \\
+truck & 58.9 & 46.8 & c3 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{Q4(c) per-class comparison on the test set. Pair-level Spearman correlation between SVM confusion rate and cluster co-assignment over all 45 pairs: 0.37. Largest disagreement: deer/ship (SVM confusion 1.6\% vs co-assignment 32.1\%).}
+\label{tab:q4cpc}
+\end{table}

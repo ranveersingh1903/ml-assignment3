@@ -1,0 +1,20 @@
+\begin{table}[t]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lrrrrr}
+\toprule
+Model & Params & LR & Train@best & Val & Test (mean$\pm$sd) \\
+\midrule
+MLP (1 hidden) & 1.60M & 0.0003 & 89.2 & 55.6 & 55.4$\pm$0.3 \\
+Deep MLP & 1.60M & 0.001 & 100.0 & 55.7 & 56.1$\pm$0.3 \\
+Patch-MLP & 1.60M & 0.001 & 100.0 & 64.6 & 64.7$\pm$0.3 \\
+MLP (1 hidden) / permuted px & same & same & -- & 55.5 & 55.2$\pm$0.3 \\
+Patch-MLP / permuted px & same & same & -- & 54.2 & 54.4$\pm$0.6 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{Q1(a) equal-budget comparison. All models matched to the same parameter budget ($\pm$2\%), 40 epochs, AdamW, cosine schedule, identical LR grid; LR chosen on val (seed 0), then 3 seeds. Train@best = training accuracy at the val-selected epoch. Permuted rows use one fixed pixel permutation for train/val/test with the clean-selected LR.}
+\label{tab:q1a}
+\end{table}
