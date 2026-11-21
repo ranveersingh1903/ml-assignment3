@@ -1,6 +1,6 @@
 # ML Assignment 3: MLPs, CNNs, Autoencoders, SVMs and Clustering on CIFAR10
 
-Name: Ranveer · Roll no.: P25CS0007 · Split seed: **250007** (all digits of the roll number, in order)
+Name: Ranveer Singh · Roll no.: P25CS0007 · Split seed: **250007** (all digits of the roll number, in order)
 
 Every number, table and figure in the report is generated from logged runs. Nothing is typed by hand.
 
